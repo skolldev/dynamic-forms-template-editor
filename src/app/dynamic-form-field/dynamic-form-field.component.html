@@ -1,0 +1,62 @@
+<div class="bg-white border-t border-gray-400 p-8 pr-0">
+  <div class="flex justify-between">
+    <h2 class="font-bold text-xl self-center mr-4">
+      Field: {{ field?.label }}
+    </h2>
+    <ng-content></ng-content>
+  </div>
+  <div class="flex flex-col">
+    <div class="flex flex-wrap justify-start mb-4">
+      <label class="mr-4">
+        <span class="block">Label</span>
+        <input
+          type="text"
+          class="px-4 mb-2 bg-gray-200 w-56 py-2 border-gray-500 border"
+          [(ngModel)]="field!.label"
+        />
+      </label>
+      <label class="mr-4">
+        <span class="block">Description</span>
+        <input
+          type="text"
+          class="px-4 mb-2 bg-gray-200 w-56 py-2 border-gray-500 border"
+          [(ngModel)]="field!.description"
+        />
+      </label>
+      <label class="mr-4">
+        <span class="block">Position</span>
+        <input
+          type="text"
+          class="px-4 mb-2 bg-gray-200 w-56 py-2 border-gray-500 border"
+          [(ngModel)]="field!.position"
+        />
+      </label>
+      <label class="self-center pt-5 w-56 text-center">
+        <span class="pr-4">Required</span>
+        <input type="checkbox" [(ngModel)]="field!.required" />
+      </label>
+      <label class="mr-4">
+        <span class="block">Field Type</span>
+        <select
+          class="px-4 mb-2  bg-gray-200 py-2 w-56 border-gray-500 border"
+          [(ngModel)]="field!.dynamicFormFieldTypeId"
+        >
+          <option [value]="1">Text</option>
+          <option [value]="2">Date</option>
+          <option [value]="3">Selection</option>
+        </select>
+      </label>
+      <div *ngIf="field?.dynamicFormFieldTypeId == 3">
+        <label class="mr-4">
+          <span class="block">Allowed Values, Comma Separated</span>
+          <input
+            type="text"
+            class="px-4 mb-2 bg-gray-200 w-56 py-2 border-gray-500 border"
+            [value]="field!.dynamicFormFieldAllowedValues | allowedValue"
+            (input)="handleChange($event.target)"
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

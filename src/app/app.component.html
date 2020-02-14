@@ -1,0 +1,50 @@
+<h1 class="text-3xl text-center text-ka-red mb-4 font-bold">
+  Dynamic Forms Template Editor
+</h1>
+<div class="flex justify-evenly mb-4 relative">
+  <div
+    class="relative w-64 bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white cursor-pointer"
+  >
+    <button class="w-64 mt-2" type="button">
+      Import
+    </button>
+    <input
+      type="file"
+      class="px-4 py-2 w-64 absolute opacity-0 inset-0"
+      (change)="import($event)"
+    />
+  </div>
+
+  <button
+    class="px-4 py-2 w-64 bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white"
+    type="button"
+    (click)="export()"
+  >
+    Export
+  </button>
+</div>
+
+<div class="flex flex-col items-start">
+  <app-dynamic-form-template
+    class="w-full mb-4"
+    *ngFor="let template of templates"
+    [template]="template"
+  >
+    <button
+      class="px-4 py-2 mr-4 w-24 bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white"
+      type="button"
+      (click)="deleteTemplate(template)"
+    >
+      Delete
+    </button>
+  </app-dynamic-form-template>
+  <div class="flex w-full justify-center">
+    <button
+      class="px-4 py-2 mr-4 w-1/3 bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white"
+      type="button"
+      (click)="addTemplate()"
+    >
+      Add Dynamic Form Template
+    </button>
+  </div>
+</div>

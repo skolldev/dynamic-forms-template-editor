@@ -1,0 +1,51 @@
+<div class="bg-white border-t border-gray-400 p-8 pr-0">
+  <div class="flex justify-between">
+    <h2 class="font-bold text-xl self-center mr-4">
+      Group: {{ group?.label }}
+    </h2>
+    <ng-content></ng-content>
+  </div>
+  <p class="italic mb-4 text-sm">{{ group?.description }}</p>
+  <div class="flex flex-col">
+    <div class="flex justify-start mb-8">
+      <label class="mr-4">
+        <span class="block">Label</span>
+        <input
+          type="text"
+          class="px-4 bg-gray-200 py-2 border-gray-500 border"
+          [(ngModel)]="group!.label"
+        />
+      </label>
+      <label>
+        <span class="block">Description</span>
+        <input
+          type="text"
+          class="px-4 bg-gray-200 py-2 border-gray-500 border"
+          [(ngModel)]="group!.description"
+        />
+      </label>
+    </div>
+    <div class="flex flex-row flex-wrap">
+      <app-dynamic-form-field
+        class="w-1/3"
+        *ngFor="let field of group?.dynamicFormFields"
+        [field]="field"
+      >
+        <button
+          class="px-4 py-2 mr-4 w-24 bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white"
+          type="button"
+          (click)="deleteField(field)"
+        >
+          Delete
+        </button></app-dynamic-form-field
+      >
+      <button
+        class="text-xl bold bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white self-center w-12 h-12"
+        type="button"
+        (click)="addField()"
+      >
+        +
+      </button>
+    </div>
+  </div>
+</div>
