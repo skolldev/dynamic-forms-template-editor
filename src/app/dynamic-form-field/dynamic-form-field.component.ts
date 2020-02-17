@@ -11,8 +11,4 @@ export class DynamicFormFieldComponent {
   public field: DynamicFormFieldModel | undefined;
 
   public fieldTypes = DynamicFormFieldTypes;
-
-  handleChange(target: any) {
-    this.field!.allowedValuesString = target.value;
-  }
 }

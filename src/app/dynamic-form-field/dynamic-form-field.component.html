@@ -48,13 +48,27 @@
       </label>
       <div *ngIf="field?.dynamicFormFieldTypeId == 3">
         <label class="mr-4">
-          <span class="block">Allowed Values, Comma Separated</span>
+          <span class="block">Allowed Values</span>
           <input
+            *ngFor="let val of field!.dynamicFormFieldAllowedValues"
             type="text"
             class="px-4 mb-2 bg-gray-200 w-56 py-2 border-gray-500 border"
-            [value]="field!.dynamicFormFieldAllowedValues | allowedValue"
-            (input)="handleChange($event.target)"
+            [(ngModel)]="val.label"
           />
+          <button
+            class="text-xl bold bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white self-center w-12 h-12"
+            type="button"
+            (click)="field!.dynamicFormFieldAllowedValues.push({ label: '' })"
+          >
+            +
+          </button>
+          <button
+            class="text-xl bold bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white self-center w-12 h-12"
+            type="button"
+            (click)="field!.dynamicFormFieldAllowedValues.pop()"
+          >
+            -
+          </button>
         </label>
       </div>
     </div>

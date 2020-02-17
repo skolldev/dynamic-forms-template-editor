@@ -42,15 +42,9 @@ export class AppComponent {
     this.templates.forEach(template => {
       template.dynamicFormGroups.forEach(group => {
         group.dynamicFormFields.forEach(field => {
-          if (!field.allowedValuesString) {
-            return;
-          }
-          field.dynamicFormFieldAllowedValues = field.allowedValuesString
-            .split(",")
-            .map(allowedValue => {
-              return { label: allowedValue.trim() };
-            });
-          delete field.allowedValuesString;
+          field.dynamicFormFieldAllowedValues = field.dynamicFormFieldAllowedValues.filter(
+            val => val.label
+          );
         });
       });
     });
