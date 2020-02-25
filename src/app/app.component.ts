@@ -42,6 +42,10 @@ export class AppComponent {
     this.templates.forEach(template => {
       template.dynamicFormGroups.forEach(group => {
         group.dynamicFormFields.forEach(field => {
+          if (field.dynamicFormFieldTypeId != 3) {
+            delete field.dynamicFormFieldAllowedValues;
+            return;
+          }
           field.dynamicFormFieldAllowedValues = field.dynamicFormFieldAllowedValues.filter(
             val => val.label
           );

@@ -44,7 +44,16 @@
           <option [value]="1">Text</option>
           <option [value]="2">Date</option>
           <option [value]="3">Selection</option>
+          <option [value]="4">External</option>
         </select>
+      </label>
+      <label class="mr-4" *ngIf="field?.dynamicFormFieldTypeId == 4">
+        <span class="block">Datasource</span>
+        <input
+          type="text"
+          class="px-4 mb-2 bg-gray-200 w-56 py-2 border-gray-500 border"
+          [(ngModel)]="field!.dataSource"
+        />
       </label>
       <div *ngIf="field?.dynamicFormFieldTypeId == 3">
         <label class="mr-4">

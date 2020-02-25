@@ -7,6 +7,7 @@ export interface DynamicFormFieldModel {
   description: string;
   position: number;
   required: boolean;
+  dataSource?: string;
   dynamicFormFieldTypeId: DynamicFormFieldTypes;
   dynamicFormFieldAllowedValues: DynamicFormFieldAllowedValues[];
   allowedValuesString?: string;
