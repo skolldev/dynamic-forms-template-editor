@@ -45,16 +45,7 @@ export class DynamicFormTemplateComponent implements OnInit {
       return;
     }
     const item = dynamicFormGroups.splice(index, 1)[0];
-
-    if (direction === "up") {
-      dynamicFormGroups.splice(index - 1, 0, item);
-      console.log(dynamicFormGroups);
-      return;
-    }
-    if (direction === "down") {
-      dynamicFormGroups.splice(index + 1, 0, item);
-      console.log(dynamicFormGroups);
-      return;
-    }
+    const newPosition = direction === "up" ? index - 1 : index + 1;
+    dynamicFormGroups.splice(newPosition, 0, item);
   }
 }
