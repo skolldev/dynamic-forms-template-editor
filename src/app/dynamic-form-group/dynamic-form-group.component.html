@@ -3,7 +3,9 @@
     <h2 class="font-bold text-xl self-center mr-4">
       Group: {{ group?.label }}
     </h2>
-    <ng-content></ng-content>
+    <div class="flex self-end justify-between">
+      <ng-content></ng-content>
+    </div>
   </div>
   <p class="italic mb-4 text-sm">{{ group?.description }}</p>
   <div class="flex flex-col">

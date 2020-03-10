@@ -31,6 +31,20 @@
       [group]="group"
     >
       <button
+        type="button"
+        class="text-xl bold bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white self-center w-12 h-12 mr-4"
+        (click)="moveGroup(group, 'up')"
+      >
+        ▲
+      </button>
+      <button
+        type="button"
+        class="text-xl bold bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white self-center w-12 h-12 mr-4"
+        (click)="moveGroup(group, 'down')"
+      >
+        ▼
+      </button>
+      <button
         class="px-4 py-2 mr-4 w-24 bg-ka-red hover:bg-ka-red-light active:bg-ka-red-dark text-white"
         type="button"
         (click)="deleteGroup(group)"

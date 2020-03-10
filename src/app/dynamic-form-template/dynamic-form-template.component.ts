@@ -22,7 +22,39 @@ export class DynamicFormTemplateComponent implements OnInit {
   }
 
   public deleteGroup(group: DynamicFormGroupModel) {
-    const index = this.template!.dynamicFormGroups.indexOf(group);
+    if (!this.template) {
+      return;
+    }
+
+    const index = this.template.dynamicFormGroups.indexOf(group);
     this.template?.dynamicFormGroups.splice(index, 1);
+  }
+
+  public moveGroup(group: DynamicFormGroupModel, direction: "up" | "down") {
+    if (!this.template || this.template.dynamicFormGroups.length === 1) {
+      return;
+    }
+
+    const { dynamicFormGroups } = this.template;
+
+    const index = dynamicFormGroups.indexOf(group);
+    if (
+      (direction === "up" && index === 0) ||
+      (direction === "down" && index === dynamicFormGroups.length - 1)
+    ) {
+      return;
+    }
+    const item = dynamicFormGroups.splice(index, 1)[0];
+
+    if (direction === "up") {
+      dynamicFormGroups.splice(index - 1, 0, item);
+      console.log(dynamicFormGroups);
+      return;
+    }
+    if (direction === "down") {
+      dynamicFormGroups.splice(index + 1, 0, item);
+      console.log(dynamicFormGroups);
+      return;
+    }
   }
 }
